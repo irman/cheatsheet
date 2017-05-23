@@ -1,6 +1,25 @@
 # Cheatsheet
 My personal cheatsheet
 
+## GIT
+
+### Change master branch
+
+```
+git checkout before-branch
+git merge --strategy=ours --no-commit master
+git commit -m "[COMMIT MESSAGE]"
+git checkout master
+git merge before-branch
+```
+
+### Add all files to git despite .gitignore
+
+```
+git add [FOLDERNAME]/* -A -f
+```
+
+
 ## SSH
 
 ### ssh-copy-id on Windows
