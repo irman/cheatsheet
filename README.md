@@ -19,3 +19,5 @@ If `~/.ssh` or `authorized_keys` doesn't exist, you have to create the `.ssh` di
  4. Set the right permissions:
 
         chmod 600 ~/.ssh/authorized_keys
+        
+-- Credit: [Louis Matthijssen](https://askubuntu.com/a/466558)
