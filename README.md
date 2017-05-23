@@ -5,7 +5,11 @@ My personal cheatsheet
 
 ### ssh-copy-id on Windows
 
-`cat ~/.ssh/id_rsa.pub | ssh [USERNAME]@[IP/HOST] "cat >> ~/.ssh/authorized_keys`
+Run:
+
+```
+cat ~/.ssh/id_rsa.pub | ssh [USERNAME]@[IP/HOST] "cat >> ~/.ssh/authorized_keys
+```
 
 If `~/.ssh` or `authorized_keys` doesn't exist, you have to create the `.ssh` directory and the `authorized_keys` file the first time.
 
