@@ -13,6 +13,9 @@ Final setup should consists of:
 
 You can skip certain parts if you don't need it.
 
+## Preparations
+1. Create new directory for your subdomain: `sudo mkdir /var/www/sub1.domain.com`
+
 ## NGINX
 1. Install: `sudo yum install nginx -y`
 1. Configure this file: `/etc/nginx/conf.d/default.conf` to something like this:
@@ -20,7 +23,7 @@ You can skip certain parts if you don't need it.
     server {
         listen 80;
         server_name sub1.domain.com;
-        root /var/www/;
+        root /var/www/sub1.domain.com/public/;
         index index.php index.html index.htm;
         
         location / {
@@ -37,10 +40,6 @@ You can skip certain parts if you don't need it.
         location ~ /\.ht {
             deny all;
         }
-
-        #ssl on;
-        #ssl_certificate /var/www/ssl/samecertif.crt;
-        #ssl_certificate_key /var/www/ssl/samecertif.key;
     }
     ```
 1. Auto-start NGINX on system start: `sudo chkconfig nginx on`
@@ -56,14 +55,13 @@ You can skip certain parts if you don't need it.
     ```
     <VirtualHost 127.0.0.1:8080>
         ServerAdmin email@sub1.domain.com
-        DocumentRoot /var/www/sub1/public/
+        DocumentRoot /var/www/sub1.domain.com/public/
         ServerName sub1.domain.com
         ErrorLog logs/sub1.domain.com-error_log
         CustomLog logs/sub1.domain.com-access_log common
     </VirtualHost>
     ```
-1. Create new directory for virtual host: `sudo mkdir /var/www/sub1`
-1. Give ownership to current logged in user: `sudo chown $USER:$USER -R /var/www/sub1/`
+1. Give ownership to current logged in user: `sudo chown $USER:$USER -R /var/www/sub1.domain.com/`
 1. Give write permission: `sudo chmod -R 755 /var/www`
 1. Auto-start Apache on system start: `sudo chkconfig httpd on`
 
@@ -119,4 +117,7 @@ You can skip certain parts if you don't need it.
 - https://www.digitalocean.com/community/tutorials/how-to-configure-nginx-as-a-reverse-proxy-for-apache
 - https://stackoverflow.com/questions/14434120/nginx-set-multiple-server-name-with-ssl-support
 - https://www.digitalocean.com/community/tutorials/how-to-install-linux-apache-mysql-php-lamp-stack-on-centos-7
+- https://certbot.eff.org/#centosrhel7-nginx
+- https://community.letsencrypt.org/t/solution-client-with-the-currently-selected-authenticator-does-not-support-any-combination-of-challenges-that-will-satisfy-the-ca/49983
 - https://coderwall.com/p/e7gzbq/https-with-certbot-for-nginx-on-amazon-linux
+- https://mariadb.com/kb/en/library/yum/
