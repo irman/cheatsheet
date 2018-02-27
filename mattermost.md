@@ -47,3 +47,14 @@ Adapted from the [official upgrade guide](https://docs.mattermost.com/administra
 ```
 sudo -u mattermost /opt/mattermost/bin/platform
 ```
+
+### Can't start mattermost because nginx is running
+
+1. Find `nginx` processes:
+    ```
+    ps -ef |grep nginx
+    ```
+1. Kill it!
+    ```
+    kill -9 [PID]
+    ```
